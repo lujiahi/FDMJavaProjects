@@ -1,0 +1,24 @@
+[
+	{
+		"name": "Bob",
+		"wallet": {
+			"usd": 100,
+			"cad": 120
+		}
+	},
+	{
+		"name": "Susan",
+		"wallet": {
+			"cad": 508,
+			"jpy": 0.3
+		}
+	},
+	{
+		"name": "Tommy",
+		"wallet": {
+			"usd": 252.34,
+			"aud": 3267.12,
+			"krw": 398
+		}
+	}
+]

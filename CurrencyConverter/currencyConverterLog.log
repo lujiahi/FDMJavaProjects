@@ -1,0 +1,36 @@
+18:28:14.870 [main] ERROR com.fdmgroup.JSONReader - src\main\resources\user.json (The system cannot find the file specified)
+18:28:14.873 [main] ERROR com.fdmgroup.TransactionProcessor - Could not read users from the user file.
+18:28:14.890 [main] ERROR com.fdmgroup.JSONReader - UserFileReturnsNull (The system cannot find the file specified)
+18:28:14.890 [main] ERROR com.fdmgroup.TransactionProcessor - Could not read users from the user file.
+18:28:14.894 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's initial wallet: {cad=20.0, usd=100.0}
+18:28:14.897 [main] INFO  com.fdmgroup.TransactionProcessor - Jia wants to convert 100.00 cad to usd
+18:28:14.898 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's balance in cad: 20.00
+18:28:14.898 [main] WARN  com.fdmgroup.TransactionProcessor - Jia does not have enought balance in cad. Transaction aborted.
+18:28:14.900 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's initial wallet: {cad=100.0}
+18:28:14.900 [main] INFO  com.fdmgroup.TransactionProcessor - Jia wants to convert 100.00 cad to usd
+18:28:14.900 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's balance in cad: 100.00
+18:28:14.900 [main] INFO  com.fdmgroup.TransactionProcessor - Attempting conversion for Jia
+18:28:14.901 [main] INFO  com.fdmgroup.TransactionProcessor - Converting 100.00 cad...
+18:28:14.934 [main] INFO  com.fdmgroup.TransactionProcessor - Into 78.45 usd according to today's exchange rate
+18:28:14.937 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's updated wallet: {cad=0.0, usd=78.45}
+18:28:14.941 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's initial wallet: {usd=100.0}
+18:28:14.942 [main] INFO  com.fdmgroup.TransactionProcessor - Jia wants to convert 100.00 cad to usd
+18:28:14.942 [main] WARN  com.fdmgroup.User - Jia does not have any cad
+18:28:14.942 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's balance in cad: 0.00
+18:28:14.942 [main] WARN  com.fdmgroup.TransactionProcessor - Jia does not have enought balance in cad. Transaction aborted.
+18:28:14.944 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's initial wallet: {usd=100.0}
+18:28:14.944 [main] INFO  com.fdmgroup.TransactionProcessor - Jia wants to convert 100.00 usd to usd
+18:28:14.945 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's balance in usd: 100.00
+18:28:14.945 [main] INFO  com.fdmgroup.TransactionProcessor - Attempting conversion for Jia
+18:28:14.945 [main] INFO  com.fdmgroup.TransactionProcessor - Converting 100.00 usd...
+18:28:14.951 [main] INFO  com.fdmgroup.TransactionProcessor - Into 100.00 usd according to today's exchange rate
+18:28:14.951 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's updated wallet: {usd=100.0}
+18:28:14.953 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's initial wallet: {usd=100.0, cad=120.0}
+18:28:14.953 [main] INFO  com.fdmgroup.TransactionProcessor - Jia wants to convert 100.00 cad to usd
+18:28:14.954 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's balance in cad: 120.00
+18:28:14.954 [main] INFO  com.fdmgroup.TransactionProcessor - Attempting conversion for Jia
+18:28:14.954 [main] INFO  com.fdmgroup.TransactionProcessor - Converting 100.00 cad...
+18:28:14.959 [main] INFO  com.fdmgroup.TransactionProcessor - Into 78.45 usd according to today's exchange rate
+18:28:14.960 [main] INFO  com.fdmgroup.TransactionProcessor - Jia's updated wallet: {usd=178.45, cad=20.0}
+18:28:20.568 [main] WARN  com.fdmgroup.User - Jia does not have any usd
+18:28:20.594 [main] ERROR com.fdmgroup.User - Jia does not have enough usd
