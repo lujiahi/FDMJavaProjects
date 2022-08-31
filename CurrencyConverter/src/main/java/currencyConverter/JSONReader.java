@@ -13,9 +13,21 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Class that provides methods to read from the JSON files
+ * 
+ * @author Lu Jia
+ *
+ */
 public class JSONReader {
 	private static final Logger logger = LogManager.getLogger();
 
+	/**
+	 * Method to deserialize users from user.json
+	 * 
+	 * @param fileName
+	 * @return a list of users
+	 */
 	public List<User> readFromUserJSON(String fileName) {
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -32,6 +44,13 @@ public class JSONReader {
 		return null;
 	}
 	
+	/**
+	 * Method to read the exchange rate of a currency from rates.json
+	 * 
+	 * @param fileName
+	 * @param currency
+	 * @return the exchange rate of a currency against the CAD
+	 */
 	public double readFromRatesJSON(String fileName, String currency) {
 		ObjectMapper mapper = new ObjectMapper();
 		

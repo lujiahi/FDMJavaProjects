@@ -7,37 +7,74 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Class that represents bank users and their wallet
+ * 
+ * @author Lu Jia
+ *
+ */
 public class User {
 	private static final Logger logger = LogManager.getLogger();
 	
 	private String name;
 	private Map<String, Double> wallet;
 
+	/**
+	 * The default constructor
+	 */
 	protected User() {
 
 	};
 	
+	/**
+	 * The parameterized constructor
+	 * 
+	 * @param name
+	 * @param wallet
+	 */
 	protected User(String name, Map<String, Double> wallet) {
 		this.name = name;
 		this.wallet = wallet;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	protected String getName() {
 		return name;
 	}
 
+	/**
+	 * 
+	 * @param name
+	 */
 	protected void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	protected Map<String, Double> getWallet() {
 		return wallet;
 	}
 
+	/**
+	 * 
+	 * @param wallet
+	 */
 	protected void setWallet(Map<String, Double> wallet) {
 		this.wallet = wallet;
 	}
 	
+	/**
+	 * Method that returns the current balance for a particular currency
+	 * 
+	 * @param currency
+	 * @return
+	 */
 	protected double getAmountInWallet(String currency) {
 		if(wallet.containsKey(currency)) {
 			return wallet.get(currency);
@@ -47,6 +84,12 @@ public class User {
 		return 0.0;
 	}
 	
+	/**
+	 * Method that adds an amount in a particular currency to the wallet
+	 * 
+	 * @param currency
+	 * @param toAdd
+	 */
 	protected void addAmountToWallet(String currency, double toAdd) {
 		BigDecimal toAddBD = new BigDecimal(toAdd);
 		
@@ -60,6 +103,13 @@ public class User {
 		}
 	}
 	
+	/**
+	 * Method that tries to deduct an amount of a particular currency from the wallet
+	 * 
+	 * @param currency
+	 * @param toDeduct
+	 * @return
+	 */
 	protected boolean deductAmountFromWallet(String currency, double toDeduct) {
 	
 		if(wallet.containsKey(currency)) {

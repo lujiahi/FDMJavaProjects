@@ -15,12 +15,24 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
+/**
+ * Class that provides methods to write back to a JSON file
+ * 
+ * @author Lu Jia
+ *
+ */
 public class JSONWriter {
 	private static final Logger logger = LogManager.getLogger();
-		
+	
+	/**
+	 * Method to serialize users to user.json
+	 * 
+	 * @param fileName
+	 * @param userList
+	 */
 	public void writeToUserJSON(String fileName, List<User> userList) {
 		
-		ObjectMapper mapper = new ObjectMapper();	
+		ObjectMapper mapper = new ObjectMapper();
 		// Make the protected fields in User class visible to the ObjectMapper
 		mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 		

@@ -9,9 +9,24 @@ import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Class that reads transaction data from a file and processes the transactions
+ * 
+ * @author Lu Jia
+ *
+ */
 public class TransactionProcessor {
 	private static final Logger logger = LogManager.getLogger();
 
+	/**
+	 * Method to read transaction data from the transaction file and user data from a user file
+	 * Calls processTransactionForUser() to further process transaction for each user
+	 * Calls updateUserFile() to update the user file
+	 * 
+	 * @param transactionFileName
+	 * @param userFileName
+	 * @return
+	 */
 	public static boolean executeTransaction(String transactionFileName, String userFileName) {
 		
 		JSONReader jsonReader = new JSONReader();
@@ -67,13 +82,21 @@ public class TransactionProcessor {
 		return true;
 	}
 
+	/**
+	 * Method to process currency conversion for a particular user
+	 * 
+	 * @param user
+	 * @param transactionData
+	 * @return
+	 */
 	static boolean processTransactionForUser(User user, String[] transactionData) {
 		
 		String name = transactionData[0];
 		String convertFrom = transactionData[1];
 		String convertTo = transactionData[2];
 		double amount = Double.parseDouble(transactionData[3]);
-			
+		
+		// check if the user has any wallet
 		if(user.getWallet() == null) {
 			logger.warn(name + "does not have any wallet. Transaction aborted.");
 			return false;
@@ -81,6 +104,8 @@ public class TransactionProcessor {
 		
 		logger.info(name + "'s initial wallet: " + user.getWallet());
 		logger.info(String.format("%s wants to convert %.2f %s to %s", name, amount, convertFrom, convertTo));
+		
+		// get the current balance in user's wallet for the currency that he wants to convert from
 		double amountInWallet = user.getAmountInWallet(convertFrom);
 		logger.info(String.format("%s's balance in %s: %.2f", name, convertFrom, amountInWallet));
 		
@@ -92,6 +117,7 @@ public class TransactionProcessor {
 			boolean conversionSuccessful = false;
 			
 			try {
+				// attempt the conversion
 				double amountGet = Converter.convert(convertFrom, convertTo, amount);
 				conversionSuccessful = true;
 				logger.info(String.format("Into %.2f %s according to today's exchange rate", amountGet, convertTo));
@@ -118,6 +144,12 @@ public class TransactionProcessor {
 		return true;
 	}
 
+	/**
+	 * Method to update the user file by passing in an updated list of users
+	 * 
+	 * @param fileName
+	 * @param user
+	 */
 	static void updateUserFile(String fileName, List<User> user) {
 		JSONWriter jsonWriter = new JSONWriter();
 		jsonWriter.writeToUserJSON(fileName, user);
