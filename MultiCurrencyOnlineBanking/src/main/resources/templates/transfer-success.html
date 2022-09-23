@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css" />
+		<title>Transfer Success</title>
+	</head>
+	<body>
+		<div class="mainwrapper">
+			<a th:href="@{/account}" class="logo"></a>
+			<ul class="menu">
+				<li><a th:href="@{/account}">My Accounts</a>
+				</li>
+				<li class="dropdown">
+					<a>Account Services</a>
+					<div class="dropdown-content">
+						<a th:href="@{/new-account}">Open New Account</a>
+						<a th:href="@{/new-currency}">Add Currency Wallet</a>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a>Funds Transfer</a>
+					<div class="dropdown-content">
+						<a th:href="@{/transfer-self}">Transfer To My Account</a>
+						<a th:href="@{/transfer}">Transfer to Another Account</a>
+					</div>
+				</li>
+				<li class="logout"><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+			<div class="content">
+				<h2>Transaction Details</h2>
+				<div>
+					<span th:if="${message}" th:text="${message}" class="topmessage"></span>
+					<span th:if="${error}" th:text="${error}" class="topmessage toperror"></span>
+				</div>
+				<div class="transaction-details">
+					<h3>To</h3>
+					<dl>
+						<dt>Recipient's Name</dt>
+						<dd><span th:text="${recipientName}" name="recipientName"></span></dd>
+						<dt>Recipient's Account</dt>
+						<dd><span th:text="${recipientAccount}" ></span></dd>
+						<dt>Recipient Received</dt>
+						<dd><span th:text="${creditAmount}" ></span> <span th:text="${recipientCurrency}" ></span></dd>
+					</dl>
+					<h3>From</h3>
+					<dl>
+						<dt>From Account</dt>
+						<dd><span th:text="${fromAccount.account.accountType.accountTypeName + ' ' + fromAccount.account.accountNumber + ' ' + fromAccount.currency.currencyName}" ></span></dd>
+						<dt>Transfer Amount</dt>
+						<dd><span th:text="${amount + ' ' + fromAccount.currency.currencyName}" ></span></dd>
+						<dt>Comments for Recipient</dt>
+						<dd><span th:text="${reference}" ></span></dd>
+						<dt>Date of Transfer</dt>
+						<dd><span th:text="${transferDate}" ></span></dd>
+					</dl>
+				</div>
+				<div class="bottom-menu">
+					<a th:href="@{/account}">Return Home</a>
+					<a th:href="@{/transfer}">Make Another Transfer</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

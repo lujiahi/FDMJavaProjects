@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css" />
+		<title>Registration</title>
+	</head>
+	<body>
+		<div class="mainform">
+			<a href="/" class="logo"></a>
+			<h2>Onine Banking Registration</h2>
+			<span th:if="${error}" th:text="${error}" class="topmessage toperror"></span>
+			<form action="#" th:action="@{/register}" th:object="${customer}" method="post" autocomplete="off">
+				<label>User ID</label>
+				<input type="text" th:field="*{username}" required>
+				<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></div>
+				<label>PIN</label>
+				<input type="password" th:field="*{password}" required>
+				<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></div>
+				<label>First Name</label>
+				<input type="text" th:field="*{firstName}" required>
+				<div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"></div>
+				<label>Last Name</label>
+				<input type="text" th:field="*{lastName}" required>
+				<div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></div>
+				<label>NRIC</label>
+				<input type="text" th:field="*{nric}" placeholder="S87654321A" required>
+				<div th:if="${#fields.hasErrors('nric')}" th:errors="*{nric}" class="error"></div>
+				<input type="submit" value="Register" class="button">
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css" />
+		<title>Account Overview</title>
+	</head>
+	<body>
+		<div class="mainwrapper">
+			<a th:href="@{/account}" class="logo"></a>
+			<ul class="menu">
+				<li><a th:href="@{/account}" class="active">My Accounts</a>
+				</li>
+				<li class="dropdown">
+					<a>Account Services</a>
+					<div class="dropdown-content">
+						<a th:href="@{/new-account}">Open New Account</a>
+						<a th:href="@{/new-currency}">Add Currency Wallet</a>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a>Funds Transfer</a>
+					<div class="dropdown-content">
+						<a th:href="@{/transfer-self}">Transfer To My Account</a>
+						<a th:href="@{/transfer}">Transfer to Another Account</a>
+					</div>
+				</li>
+				<li class="logout"><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+			<div class="content">
+				<div th:if="${customer}" class="welcome">Welcome Back, <br/>
+					<span th:text=${customer.firstName}></span>
+					<span th:text=${customer.lastName}></span>
+				</div>
+				<div class="messages">
+					<span th:if="${message}" th:text="${message}" class="topmessage"></span>
+					<span th:if="${error}" th:text="${error}" class="topmessage toperror"></span>
+				</div>
+				<div class="account-list">
+					<h2>Your ABC Bank Accounts</h2>
+					<div th:if="${createNew}">
+						<a th:href="@{/new-account}">Open a new ABC Bank account</a> today and get instant approval!
+					</div>
+					<table th:if="${accounts}" th:each="account:${accounts}" class="account">
+						<tr>
+							<td class="account-type">
+								<a th:href="@{/account/} + ${account.accountNumber}"><span th:text="${account.accountType.accountTypeDesc}" /></a>
+							</td>
+							<td class="account-number">Account Number: <a th:href="@{/account/} + ${account.accountNumber}"><span th:text="${account.accountNumber}" /></a></td>
+							<td class="account-wallet">
+								<!--<td th:text="${account.balance}"></td>-->
+								<div th:each="accountCurrency:${account.accountCurrencyList}" class="wallet">
+									<div class="wallet-summary"><span th:text="${accountCurrency.currency.currencyName}"></span> Wallet Balance: <span th:text="${accountCurrency.balance}" class="balance"></span></div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

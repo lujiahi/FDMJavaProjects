@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css" />
+		<title>Transaction History</title>
+	</head>
+	<body>
+		<div class="mainwrapper">
+			<a th:href="@{/account}" class="logo"></a>
+			<ul class="menu">
+				<li><a th:href="@{/account}">My Accounts</a>
+				</li>
+				<li class="dropdown">
+					<a>Account Services</a>
+					<div class="dropdown-content">
+						<a th:href="@{/new-account}">Open New Account</a>
+						<a th:href="@{/new-currency}">Add Currency Wallet</a>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a>Funds Transfer</a>
+					<div class="dropdown-content">
+						<a th:href="@{/transfer-self}">Transfer To My Account</a>
+						<a th:href="@{/transfer}">Transfer to Another Account</a>
+					</div>
+				</li>
+				<li class="logout"><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+			<div class="content">
+				<h2>Transaction History</h2>
+				<div class="account-summary">
+					<span th:text="${account.accountType.accountTypeDesc}"></span>
+					<span th:text="${account.accountNumber}"></span>
+				</div>
+				<div th:each="accountCurrency:${accountCurrencyList}" class="wallet">
+					<div class="trans-wallet-summary"><span th:text="${accountCurrency.currency.currencyName}"></span> Wallet Balance: <span th:text="${accountCurrency.balance}"></span></div>
+					<div class="transaction-history">
+						<table class="transaction-history">
+							<tr>
+								<th class="date">Date</t>
+								<th class="reference">Reference</th>
+								<th class="debit">Debit (Withdrawal)</th>
+								<th class="credit">Credit (Deposit)</th>
+							</tr>
+							<tr th:each="transaction:${accountCurrency.transactions}">
+								<td class="date"><span th:text="${transaction.transactionDetail.transactionTime}"></span></td>
+								<td class="reference"><span th:text="${transaction.transactionDetail.reference}"></span></td>
+								<td class="debit"><span th:if="${transaction.type} eq 'debit'" th:text="${transaction.amount}"></span></td>
+								<td class="credit"><span th:if="${transaction.type} eq 'credit'" th:text="${transaction.amount}"></span></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

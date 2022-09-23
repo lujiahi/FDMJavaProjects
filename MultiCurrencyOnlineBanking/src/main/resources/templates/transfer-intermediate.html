@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css" />
+		<title>Transfer to Another Account</title>
+	</head>
+	<body>
+		<div class="mainwrapper">
+			<a th:href="@{/account}" class="logo"></a>
+			<ul class="menu">
+				<li><a th:href="@{/account}">My Accounts</a>
+				</li>
+				<li class="dropdown">
+					<a>Account Services</a>
+					<div class="dropdown-content">
+						<a th:href="@{/new-account}">Open New Account</a>
+						<a th:href="@{/new-currency}">Add Currency Wallet</a>
+					</div>
+				</li>
+				<li class="dropdown">
+					<a>Funds Transfer</a>
+					<div class="dropdown-content">
+						<a th:href="@{/transfer-self}">Transfer To My Account</a>
+						<a th:href="@{/transfer}">Transfer to Another Account</a>
+					</div>
+				</li>
+				<li class="logout"><a th:href="@{/logout}">Logout</a></li>
+			</ul>
+			<div class="content">
+				<h2>Transfer To Another Account</h2>
+				<div>
+					<span th:if="${message}" th:text="${message}" class="topmessage"></span>
+					<span th:if="${error}" th:text="${error}" class="topmessage toperror"></span>
+				</div>
+				<div class="transfer-other">
+					<form th:action="@{/transfer-intermediate}" method="post" class="fund-transfer-form">
+						<input type="hidden" th:value="${recipientAccount}" name="recipientAccount">
+						<input type="hidden" th:value="${recipientName}" name="recipientName">
+						<h3>To</h3>
+						<div class="form-row">
+							<label>Recipient Name</label>
+							<span th:text="${recipientName}" class="retrievedValue"></span>
+						</div>
+						<div class="form-row"> <label>Recipient Account</label>
+							<span th:text="${recipientAccount}" class="retrievedValue"></span>
+						</div>
+						<div class="form-row">
+							<label>Recipient Currency</label>
+							<select class="dropdown" name="recipientAccountCurrency" required>
+								<option value="">Select Currency</option>
+								<option th:each="accountCurrency : ${recipientAccountCurrencyList}" th:value="${accountCurrency.accountCurrencyId}" th:text="${accountCurrency.currency.currencyName}"></option>
+							</select>
+						</div>
+						<h3>From</h3>
+						<div class="form-row">
+							<label>My Account and Currency</label>
+							<select class="dropdown" name="myAccountCurrency" required>
+								<option value="">Select Account</option>
+								<option th:each="accountCurrency : ${myAccountCurrencyList}" th:value="${accountCurrency.accountCurrencyId}" th:text="${accountCurrency.account.accountType.accountTypeName} + ' ' + ${accountCurrency.account.accountNumber} + ' ' + ${accountCurrency.currency.currencyName}"></option>
+							</select>
+						</div>
+						<div class="form-row">
+							<label>Transfer Amount</label>
+							<input type="text" name="transferAmount" required>
+						</div>
+						<div class="form-row"><label>Reference</label>
+							<input type="text" name="reference">
+						</div>
+						<div class="submit-form">
+							<input type="submit" value="Check Live Exchange Rate" name="checkRate" class="button check-rate-button">
+							<input type="submit" value="Transfer Now" class="button">
+						</div>
+						<div th:if="${convertedAmount}" class="check-rate-result">
+							<span th:text="${#dates.format(#dates.createNow(), 'dd-MMM-yyyy')} + ' : '" ></span>
+							<span th:if="${amount}" th:text="${amount}"></span> <span th:if="${fromCurrency}" th:text="${fromCurrency} + ' can be converted to '"></span>
+							<span th:if="${convertedAmount}" th:text="${convertedAmount}"></span> <span th:if="${toCurrency}" th:text="${toCurrency}"></span>
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+		</div>
+	</body>
+</html>

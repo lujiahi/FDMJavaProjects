@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css" />
+		<title>Login</title>
+	</head>
+	<body>
+		<div class="mainform">
+			<a href="/" class="logo"></a>
+			<span th:if="${message}" th:text="${message}" class="topmessage"></span>
+			<span th:if="${error}" th:text="${error}" class="topmessage toperror"></span>
+			<form action="#" th:action="@{/}" th:object="${customer}" method="post" autocomplete="off">
+				<label>User ID</label>
+				<input type="text" th:field="*{username}" required>
+				<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error">Username Error</div>
+				<label>PIN</label>
+				<input type="password" th:field="*{password}" required>
+				<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error">Password Error</div>
+				<input type="submit" value="Login" class="button">
+				<a href="register" class="get-started">Get Started</a>
+			</form>
+		</div>
+	</body>
+</html>

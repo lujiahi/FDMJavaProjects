@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-image: url("bg3.jpg");
+    background-size: 100%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    color: #000;
+}
+input,
+select{
+    font-size:15px;
+}
+input.button{
+    font-weight: bold;
+}
+.topmessage {
+    padding: 5px;
+    display: block;
+    margin-bottom: 10px;
+    color: #228f30;
+    border: 1px solid #228f30;
+    background-color: #038b1515;
+}
+.toperror {
+    color: #fc1e01;
+    border:1px solid #fc1e01;
+    background-color: #fc1e010c;
+}
+a.logo{
+    display: block;
+    height: 64px;
+    width: 127px;
+    background-image: url("logo.jpg");
+    margin: 0 auto;
+    padding: 0;
+}
+.mainform a.logo {
+    border: none;
+    padding: 0;
+}
+.mainform {
+    width: 340px;
+    min-height: 200px;
+    padding: 20px 30px 30px;
+    margin: 150px auto;
+    background-color: #fff;
+    border-top: 5px solid #2670a9;
+    box-shadow: 3px 3px 5px #666;
+}
+.mainform h2 {
+    font-size: 18px;
+    color: #2670a9;
+    padding: 10px 0;
+    font-weight: normal;
+}
+.mainform label{
+    color: #666;
+}
+.mainform input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #333;
+    background-color: #2670a90c;
+    padding: 5px;
+    margin-bottom: 30px;
+}
+.mainform .error {
+    color: #fc1e01;
+    height: 30px;
+    margin-top: -30px;
+    font-size: 13px;
+}
+
+.mainform .button,
+.mainform a{
+    border-radius: 5px;
+    padding: 8px 0;
+    cursor: pointer;
+}
+.mainform .button {
+    background-color: #2670a9;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.mainform .button:hover {
+    background-color: #114e7e;
+}
+.mainform a.get-started {
+    text-decoration: none;
+    color: #2670a9;
+    border: 1px solid #2670a9;
+    display: block;
+    text-align: center;
+}
+.mainwrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #fff;
+    min-height: 100vh;
+    height: auto;
+    box-shadow: 3px 3px 5px #666;
+}
+ul.menu {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #eee;
+    padding: 0 10px;
+    margin:10px 0;
+    box-shadow: 0px 1px 4px #ccc;
+}
+ul.menu li{
+    float: left;
+}
+ul.menu li a {
+    display: inline-block;
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 10px 25px;
+    text-align: center;
+    cursor: pointer;
+}
+ul.menu li a.active {
+}
+ul.menu li a:hover{
+    background-color: #fff;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 2px 3px 5px #ccc;
+    z-index: 1;
+}
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+ul.menu li.dropdown .dropdown-content a{
+    display:block;
+    text-align: left;
+    font-size: 14px;
+}
+ul.menu li.dropdown .dropdown-content a:hover{
+    background-color: #eee;
+}
+ul.menu li.logout{
+    float:right;
+}
+ul.menu li.logout a:hover{
+    background-color: #2670a9;
+    color: #fff;
+}
+.content {
+    padding: 20px;
+}
+.welcome {
+    font-size: 15px;
+    margin: 20px 0;
+}
+.welcome span{
+    font-size: 120%;
+}
+.content h2{
+    border-bottom: 1px solid #2670a9;
+    font-weight: normal;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+.content a{
+    color: #2670a9;
+    text-decoration: none;
+}
+.account-list table.account{
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    font-size: 15px;
+    color: #666;
+}
+.account-list table.account td{
+    padding: 10px;
+    vertical-align: top;
+}
+td.account-type{
+    width: 30%;
+    border-right: 1px solid #eee;
+}
+td.account-number{
+    width: 30%;
+    border-right: 1px solid #eee;
+}
+td.account-wallet{
+    width: 40%;
+    text-align: right;
+}
+a.account-type{
+    font-weight: bold;
+}
+.account-list table.account span.balance{
+    color: #000;
+}
+
+.account-summary{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.wallet .trans-wallet-summary{
+    background-color: #2670a9;
+    color:#fff;
+    margin: 20px 0 10px 0;
+    font-weight: bold;
+    padding: 10px 5px;
+    border-radius: 2px;
+}
+.wallet table{
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+.wallet table tr{
+    border-bottom: 1px solid #eee;
+}
+.wallet table th{
+    color: #999;
+    padding-bottom: 15px;
+}
+.wallet table td{
+    vertical-align: top;
+    padding: 10px 0;
+}
+.content select, .content input{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.content input.button{
+    background-color: #2670a9;
+    border:none;
+    border-radius: 3px;
+    color:#fff;
+    font-weight: bold;
+}
+.content input.button:hover{
+    background-color: #114e7e;
+}
+.open-new-account,
+.add-currency,
+.transfer-self,
+.transfer-other,
+.transaction-details{
+    padding: 10px;
+}
+
+.content select, .content input
+{
+    margin: 10px 5px;
+}
+form.fund-transfer-form 
+{
+    margin: 0 auto;
+}
+.form-row
+{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.form-row label
+{
+    flex: 1;
+    text-align: right;
+    padding-right: 20px;
+}
+.form-row select,
+.form-row input,
+.form-row span.retrievedValue
+{
+    flex: 2;
+    width: 120px;
+}
+.form-row span.retrievedValue{
+    display:block;
+    margin: 10px 0;
+}
+.content h3{
+    color:#2670a9;
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: normal;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+form.fund-transfer-form label,
+form.fund-transfer-form select,
+form.fund-transfer-form input{
+}
+.submit-form{
+    padding: 20px 0;
+    text-align: right;
+}
+.submit-form input.button{
+    border: 2px solid #2670a9;
+}
+.submit-form input.check-rate-button{
+    border: 2px solid #2670a9;
+    background-color: #fff;
+    color: #2670a9;
+}
+.submit-form input.check-rate-button:hover{
+    background-color: #2670a9;
+    color: #fff;
+}
+.check-rate-result{
+    text-align: center;
+    font-size: 15px;
+    padding: 10px 0;
+    background-color: #2670a934;
+}
+
+.transaction-details{
+padding: 10px;
+background: #eee;
+width: 600px;
+margin: 0 auto;
+border: 1px solid #2670a9;
+}
+.transaction-details h3{
+    padding-bottom: 0;
+}
+dl {
+    width: 100%;
+    overflow: hidden;
+}
+dt, dd {
+    float: left;
+    width: 50%;
+    margin: 5px 0;
+}
+
+.bottom-menu{
+    text-align: center;
+    padding: 20px;
+}
+.bottom-menu a{
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0 20px;
+}
+div.transaction-history{
+    padding: 0 10px;
+}
+table.transaction-history th
+{
+    width: 25%;
+}
+table.transaction-history th.debit,
+table.transaction-history th.credit,
+table.transaction-history td.debit,
+table.transaction-history td.credit{
+    text-align: right;
+}
