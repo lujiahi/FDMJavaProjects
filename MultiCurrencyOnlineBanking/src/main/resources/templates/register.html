@@ -26,7 +26,7 @@
 				<input type="text" th:field="*{lastName}" required>
 				<div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"></div>
 				<label>NRIC</label>
-				<input type="text" th:field="*{nric}" placeholder="S87654321A" required>
+				<input type="text" th:field="*{nric}" placeholder="S8765432A" required>
 				<div th:if="${#fields.hasErrors('nric')}" th:errors="*{nric}" class="error"></div>
 				<input type="submit" value="Register" class="button">
 			</form>
